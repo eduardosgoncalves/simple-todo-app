@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react"
 
-function TodoItem(props) {
+const TodoItem = props => {
   const completedStyle = {
-      fontStyle: "italic",
-      color: "#d34e0f",
-      opacity: 0.4,
-      textDecoration: "line-through"
-  };
+    fontStyle: "italic",
+    color: "#d35e0f",
+    opacity: 0.4,
+    textDecoration: "line-through",
+  }
 
-  const { completed, id, title } = props.todo;
+  useEffect(() => {
+      return () => {
+          alert("Item about to be deleted!")
+      }
+  }, [])
+
+  const { completed, id, title } = props.todo
 
   return (
     <li className="todo-item">
@@ -20,7 +26,7 @@ function TodoItem(props) {
       <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
       <span style={completed ? completedStyle : null}>{title}</span>
     </li>
-  );
+  )
 }
 
-export default TodoItem;
+export default TodoItem
